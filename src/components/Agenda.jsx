@@ -1,88 +1,112 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AGENDA = [
-  { cat: 'Infrastructure', pri: 'HIGH', prob: 'Poor road conditions and outdated drainage.', prop: 'Comprehensive road upgrades and stormwater systems.', impact: 'Safer, more accessible neighbourhoods.', status: 'VISION' },
-  { cat: 'Education', pri: 'HIGH', prob: 'Inadequate government school facilities.', prop: 'Infrastructure upgrades and digital classrooms.', impact: 'Better outcomes for thousands of students.', status: 'VISION' },
-  { cat: 'Healthcare', pri: 'HIGH', prob: 'Limited primary healthcare access.', prop: 'PHC upgrades and mobile health units.', impact: 'Reduced healthcare costs for families.', status: 'VISION' },
-  { cat: 'Employment', pri: 'HIGH', prob: 'Youth unemployment and skill gaps.', prop: 'Skill hubs, startup support and employment drives.', impact: 'Greater local employment and retention.', status: 'PROPOSED' },
-  { cat: 'Women', pri: 'MEDIUM', prob: 'Limited opportunities and safety concerns.', prop: 'SHG support, safety programmes and welfare access.', impact: 'Greater economic independence.', status: 'PROPOSED' },
-  { cat: 'Environment', pri: 'MEDIUM', prob: 'Lack of green spaces, waste issues.', prop: 'Urban greening, park development, waste management.', impact: 'Cleaner and healthier city spaces.', status: 'VISION' },
+  { cat: 'INFRASTRUCTURE', pri: 'HIGH', status: 'VISION', prob: 'Poor road conditions and outdated drainage.', prop: 'Comprehensive road upgrades and stormwater systems.', impact: 'Safer, more accessible neighbourhoods.' },
+  { cat: 'EDUCATION', pri: 'HIGH', status: 'VISION', prob: 'Government schools lack digital infrastructure.', prop: 'Smart classrooms and free local tuition centres.', impact: 'Competitive edge for government school students.' },
+  { cat: 'HEALTHCARE', pri: 'HIGH', status: 'ACTION', prob: 'Overcrowded primary health centres.', prop: 'Upgrading PHCs with better diagnostic equipment.', impact: 'Faster, reliable local medical care.' },
+  { cat: 'EMPLOYMENT', pri: 'MEDIUM', status: 'VISION', prob: 'Lack of local skill development for youth.', prop: 'Establishing a dedicated youth skill and placement cell.', impact: 'Higher local employment rates.' },
+  { cat: 'WOMEN', pri: 'HIGH', status: 'ACTION', prob: 'Limited support for women entrepreneurs.', prop: 'Micro-finance facilitation and local markets for SHGs.', impact: 'Financial independence for local women.' },
+  { cat: 'ENVIRONMENT', pri: 'MEDIUM', status: 'VISION', prob: 'Deteriorating local parks and green cover.', prop: 'Massive tree planting and park restoration drive.', impact: 'Cleaner air and better community spaces.' },
 ];
 
-const CATS = ['All', 'Infrastructure', 'Education', 'Healthcare', 'Employment', 'Women', 'Environment'];
-const STATUS_COLOR = { VISION: 'border-jade text-jade', PROPOSED: 'border-yellow-500 text-yellow-400', 'IN PROGRESS': 'border-blue-400 text-blue-400', COMPLETED: 'border-emerald-400 text-emerald-400' };
+const CATS = ['ALL', ...new Set(AGENDA.map(a => a.cat))];
+const STATUS_COLOR = {
+  'VISION': 'border-green-700/20 text-green-700 bg-green-50',
+  'ACTION': 'border-red-600/20 text-red-600 bg-red-50'
+};
 
 export default function Agenda() {
-  const [active, setActive] = useState('All');
-  const filtered = active === 'All' ? AGENDA : AGENDA.filter(a => a.cat === active);
+  const [active, setActive] = useState('ALL');
+  const filtered = active === 'ALL' ? AGENDA : AGENDA.filter(a => a.cat === active);
 
   return (
-    <section id="agenda" className="bg-white py-28 relative overflow-hidden">
-      <span className="section-num right-0 top-8">04</span>
-
-      <div className="wrap relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Development Priorities</span>
+    <section id="agenda" className="bg-white py-24 relative overflow-hidden">
+      <div className="wrap relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px w-12 bg-red-600" />
+              <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Our Commitment</span>
+            </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="display-font text-gray-900 leading-tight"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+            >
+              AN AGENDA<br /><span className="text-green-700">FOR ACTION</span>
+            </motion.h2>
+          </div>
         </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 mb-12"
-          style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}
-        >
-          AN AGENDA<br /><span className="text-jade">FOR ACTION</span>
-        </motion.h2>
 
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Filters (Scrollable on mobile) */}
+        <div className="flex overflow-x-auto hide-scrollbar gap-2 mb-10 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           {CATS.map(c => (
             <button key={c} onClick={() => setActive(c)}
-              className={`label px-4 py-2 border transition-all duration-200 ${
-                active === c ? 'bg-jade border-jade text-gray-900' : 'border-gray-300/10 text-gray-600 hover:border-jade hover:text-jade'
+              className={`whitespace-nowrap font-bold text-[10px] tracking-widest uppercase px-5 py-2.5 rounded-full transition-all duration-300 ${
+                active === c 
+                  ? 'bg-green-700 text-white shadow-md' 
+                  : 'bg-gray-50 text-gray-600 hover:bg-green-50 hover:text-green-700 border border-gray-100'
               }`}>
               {c}
             </button>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
-          {filtered.map((item, i) => (
-            <motion.div
-              key={`${item.cat}-${i}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.07 }}
-              className="bg-gray-50 p-8 group hover:bg-gray-100 transition-all duration-300"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <span className="display-font text-jade tracking-widest text-lg">{item.cat}</span>
-                <span className={`label border px-2 py-0.5 text-[9px] ${STATUS_COLOR[item.status] || 'border-ash text-gray-600'}`}>
-                  {item.status}
-                </span>
-              </div>
-              <div className="text-crimson label mb-1">{item.pri} PRIORITY</div>
-              <div className="space-y-4 mt-4">
-                <div>
-                  <div className="label text-gray-600 mb-1 text-[9px]">THE PROBLEM</div>
-                  <p className="text-gray-800/60 text-xs leading-relaxed">{item.prob}</p>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((item, i) => (
+              <motion.div
+                key={`${item.cat}-${i}`}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-xl p-4 sm:p-8 shadow-sm hover:shadow-lg border border-gray-100 transition-shadow duration-300 flex flex-col"
+              >
+                {/* Card Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-gray-50 gap-2">
+                  <span className="font-bold text-green-700 tracking-widest text-[10px] sm:text-sm uppercase leading-tight">{item.cat}</span>
+                  <span className={`font-bold tracking-widest uppercase px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] sm:text-[9px] border self-start sm:self-auto ${STATUS_COLOR[item.status] || 'border-gray-200 text-gray-600'}`}>
+                    {item.status}
+                  </span>
                 </div>
-                <div>
-                  <div className="label text-gray-600 mb-1 text-[9px]">PROPOSED FOCUS</div>
-                  <p className="text-gray-800/80 text-xs leading-relaxed">{item.prop}</p>
+                
+                {/* Priority Label */}
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+                  <div className={`w-1.5 h-1.5 rounded-full ${item.pri === 'HIGH' ? 'bg-red-600' : 'bg-yellow-500'}`} />
+                  <span className="text-gray-900 font-bold text-[8px] sm:text-[10px] tracking-widest uppercase">{item.pri} PRIORITY</span>
                 </div>
-                <div>
-                  <div className="label text-jade mb-1 text-[9px]">EXPECTED IMPACT</div>
-                  <p className="text-jade/70 text-xs leading-relaxed">{item.impact}</p>
+
+                {/* Content Sections */}
+                <div className="space-y-4 sm:space-y-5 flex-grow">
+                  <div>
+                    <div className="text-gray-400 font-bold tracking-widest text-[8px] sm:text-[9px] uppercase mb-1 sm:mb-1.5">The Problem</div>
+                    <p className="text-gray-700 text-[10px] sm:text-sm leading-relaxed">{item.prob}</p>
+                  </div>
+                  <div>
+                    <div className="text-gray-400 font-bold tracking-widest text-[8px] sm:text-[9px] uppercase mb-1 sm:mb-1.5">Proposed Focus</div>
+                    <p className="text-gray-900 text-[10px] sm:text-sm leading-relaxed">{item.prop}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Impact Footer */}
+                <div className="mt-4 sm:mt-6 pt-4 sm:pt-5 border-t border-gray-50">
+                  <div className="text-green-700 font-bold tracking-widest text-[8px] sm:text-[9px] uppercase mb-1 sm:mb-1.5">Expected Impact</div>
+                  <p className="text-green-800 font-medium text-[10px] sm:text-sm leading-relaxed">{item.impact}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
+
       </div>
     </section>
   );
 }
-
-

@@ -45,15 +45,21 @@ export default function Constituency() {
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-1 bg-gray-100 border border-jade/20 p-10 flex flex-col items-center justify-center min-h-72 relative overflow-hidden"
+            className="lg:col-span-1 bg-white border border-gray-200 rounded-xl overflow-hidden relative shadow-sm group"
           >
-            <div className="absolute inset-0 opacity-10"
-              style={{ backgroundImage: 'repeating-linear-gradient(0deg, #27ae6b 0, #27ae6b 1px, transparent 0, transparent 40px), repeating-linear-gradient(-90deg, #27ae6b 0, #27ae6b 1px, transparent 0, transparent 40px)' }} />
-            <MapPin size={36} className="text-crimson mb-3 relative z-10 animate-float" />
-            <div className="display-font text-gray-900 text-3xl tracking-widest text-center relative z-10">TRICHY EAST</div>
-            <div className="label text-jade mt-2 relative z-10">TAMIL NADU</div>
-            <div className="mt-4 text-xs text-gray-600 text-center relative z-10">Constituency Map Placeholder</div>
-            <div className="absolute top-1/2 left-1/2 w-6 h-6 bg-crimson rounded-full -translate-x-1/2 -translate-y-1/2 animate-ping opacity-30 z-10" />
+            <img 
+              src="/map.jpeg" 
+              alt="Map of Trichy East Constituency" 
+              className="w-full h-full object-cover min-h-[300px] transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Overlay label */}
+            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-lg shadow-sm border border-white">
+              <div className="flex items-center gap-3 mb-1">
+                <MapPin size={20} className="text-red-600" />
+                <div className="display-font text-gray-900 text-xl tracking-widest leading-none">TRICHY EAST</div>
+              </div>
+              <div className="text-gray-500 font-bold tracking-widest text-[9px] uppercase pl-8">Tamil Nadu Constituency</div>
+            </div>
           </motion.div>
 
           {/* Issues */}
