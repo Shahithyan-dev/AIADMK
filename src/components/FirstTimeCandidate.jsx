@@ -32,7 +32,7 @@ export default function FirstTimeCandidate() {
               REAL RESULTS.
             </h2>
             <p className="text-gray-600 leading-relaxed max-w-md">
-              Kartikeyan enters electoral politics from Trichy East for the IMPACT in 2026 — bringing energy,
+              C.Karthikeyan enters electoral politics from Trichy East for the IMPACT in 2026 — bringing energy,
               a clean slate, and an uncompromising commitment to the people of this constituency.
             </p>
             <div className="mt-8 inline-block border border-gray-300/10 px-6 py-3">
@@ -67,5 +67,6 @@ export default function FirstTimeCandidate() {
     </section>
   );
 }
+
 
 

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
 const NEWS = [
-  { cat: 'NEWS', date: 'September 2026', title: 'Kartikeyan Launches Campaign for Trichy East', desc: 'Marking the beginning of his first electoral journey, Kartikeyan officially launches his campaign with a commitment to practical service for Trichy East.', img: '/hero1.jpeg', featured: true },
+  { cat: 'NEWS', date: 'September 2026', title: 'C.Karthikeyan Launches Campaign for Trichy East', desc: 'Marking the beginning of his first electoral journey, C.Karthikeyan officially launches his campaign with a commitment to practical service for Trichy East.', img: '/hero1.jpeg', featured: true },
   { cat: 'STATEMENT', date: 'September 2026', title: 'Vision for a Stronger Trichy East', desc: 'Six-pillar vision for Trichy East focusing on infrastructure, education, healthcare and inclusive development.', img: '/hero2.jpeg' },
-  { cat: 'EVENT', date: 'September 2026', title: 'Community Meeting — Ward Representatives', desc: 'Kartikeyan meets ward-level community representatives to understand ground-level concerns.', img: '/hero3.jpeg' },
+  { cat: 'EVENT', date: 'September 2026', title: 'Community Meeting — Ward Representatives', desc: 'C.Karthikeyan meets ward-level community representatives to understand ground-level concerns.', img: '/hero3.jpeg' },
   { cat: 'MEDIA', date: 'September 2026', title: 'AIADMK Announces Trichy East Candidate', desc: '[Editable: Add details of party announcement and media coverage.]', img: '/hero1.jpeg' },
 ];
 
@@ -85,4 +85,5 @@ export default function News() {
     </section>
   );
 }
+
 

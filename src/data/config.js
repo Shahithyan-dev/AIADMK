@@ -1,16 +1,16 @@
 export const POLITICIAN = {
-  name: "Kartikeyan",
+  name: "C.Karthikeyan",
   party: "AIADMK",
   constituency: "Trichy East",
   state: "Tamil Nadu",
   tagline: "Leadership with Purpose. Service with Commitment.",
-  shortBio: "Entering electoral politics from Trichy East for the first time, Kartikeyan brings a commitment to practical public service, community engagement, and accountable leadership to the people of Trichy East.",
+  shortBio: "Entering electoral politics from Trichy East for the first time, C.Karthikeyan brings a commitment to practical public service, community engagement, and accountable leadership to the people of Trichy East.",
   heroQuote: "A new voice, grounded in service, committed to Trichy East.",
   contact: {
     office: "Campaign Office, Trichy East",
     city: "Trichy, Tamil Nadu",
     phone: "+91 XXXXX XXXXX",
-    email: "connect@kartikeyan.in",
+    email: "connect@C.Karthikeyan.in",
     facebook: "https://facebook.com/",
     instagram: "https://instagram.com/",
     youtube: "https://youtube.com/",
@@ -19,11 +19,11 @@ export const POLITICIAN = {
 };
 
 export const ABOUT = {
-  title: "About Kartikeyan",
+  title: "About C.Karthikeyan",
   sections: [
     {
       heading: "Background",
-      content: "[Editable: Add background information about Kartikeyan origins, family and community roots in Trichy East.]",
+      content: "[Editable: Add background information about C.Karthikeyan origins, family and community roots in Trichy East.]",
     },
     {
       heading: "Education",
@@ -35,11 +35,11 @@ export const ABOUT = {
     },
     {
       heading: "Social Service",
-      content: "[Editable: Add community service activities and social initiatives led by Kartikeyan.]",
+      content: "[Editable: Add community service activities and social initiatives led by C.Karthikeyan.]",
     },
     {
       heading: "Political Journey",
-      content: "Kartikeyan is contesting from Trichy East constituency for the first time in 2026, marking the beginning of his formal electoral journey under the AIADMK banner.",
+      content: "C.Karthikeyan is contesting from Trichy East constituency for the first time in 2026, marking the beginning of his formal electoral journey under the AIADMK banner.",
     },
     {
       heading: "Leadership Values",
@@ -52,7 +52,7 @@ export const TIMELINE = [
   {
     year: "2026",
     title: "Entering Electoral Politics",
-    description: "Kartikeyan officially enters electoral politics, contesting from Trichy East under the AIADMK banner.",
+    description: "C.Karthikeyan officially enters electoral politics, contesting from Trichy East under the AIADMK banner.",
     status: "current",
   },
   {
@@ -70,7 +70,7 @@ export const TIMELINE = [
   {
     year: "Ongoing",
     title: "Professional Experience",
-    description: "[Editable: Add professional milestones and experiences that shape Kartikeyan leadership approach.]",
+    description: "[Editable: Add professional milestones and experiences that shape C.Karthikeyan leadership approach.]",
     status: "past",
   },
 ];
@@ -185,8 +185,8 @@ export const NEWS_ITEMS = [
     id: 1,
     category: "News",
     date: "September 2026",
-    title: "Kartikeyan Launches Campaign for Trichy East",
-    description: "Marking the beginning of his first electoral journey, Kartikeyan officially launches his campaign with a commitment to service and development for Trichy East.",
+    title: "C.Karthikeyan Launches Campaign for Trichy East",
+    description: "Marking the beginning of his first electoral journey, C.Karthikeyan officially launches his campaign with a commitment to service and development for Trichy East.",
     image: "/hero1.jpeg",
     featured: true,
   },
@@ -195,7 +195,7 @@ export const NEWS_ITEMS = [
     category: "Public Statement",
     date: "September 2026",
     title: "Vision for a Stronger Trichy East",
-    description: "Kartikeyan outlines his six-pillar vision for Trichy East, focusing on infrastructure, education, healthcare and inclusive development.",
+    description: "C.Karthikeyan outlines his six-pillar vision for Trichy East, focusing on infrastructure, education, healthcare and inclusive development.",
     image: "/hero2.jpeg",
     featured: false,
   },
@@ -204,7 +204,7 @@ export const NEWS_ITEMS = [
     category: "Event",
     date: "September 2026",
     title: "Community Meeting — Ward Representatives",
-    description: "Kartikeyan meets with ward-level community representatives to understand ground-level concerns of Trichy East residents.",
+    description: "C.Karthikeyan meets with ward-level community representatives to understand ground-level concerns of Trichy East residents.",
     image: "/hero3.jpeg",
     featured: false,
   },
@@ -231,3 +231,4 @@ export const NAV_LINKS = [
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
+

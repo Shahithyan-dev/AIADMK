@@ -23,7 +23,7 @@ export default function Contact() {
           className="display-font text-gray-900 mb-16"
           style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
         >
-          CONNECT WITH<br /><span className="text-jade">KARTIKEYAN</span>
+          CONNECT WITH<br /><span className="text-jade">C.Karthikeyan</span>
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -36,7 +36,7 @@ export default function Contact() {
                 {[
                   { Icon: MapPin, text: 'Campaign Office, Trichy East, Tamil Nadu' },
                   { Icon: Phone, text: '+91 XXXXX XXXXX' },
-                  { Icon: Mail, text: 'connect@kartikeyan.in' },
+                  { Icon: Mail, text: 'connect@C.Karthikeyan.in' },
                 ].map(({ Icon, text }) => (
                   <div key={text} className="flex items-center gap-4 text-gray-600">
                     <Icon size={16} className="text-jade shrink-0" />
@@ -95,4 +95,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

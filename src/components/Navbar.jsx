@@ -133,7 +133,7 @@ export default function Navbar() {
               ))}
             </div>
             <button onClick={() => go('#contact')} className="mt-auto bg-green-700 text-white font-bold text-xs tracking-widest uppercase py-4 w-full text-center transition-colors hover:bg-green-800">
-              Connect With Kartikeyan
+              Connect With C.Karthikeyan
             </button>
           </motion.div>
         )}
@@ -141,3 +141,4 @@ export default function Navbar() {
     </>
   );
 }
+

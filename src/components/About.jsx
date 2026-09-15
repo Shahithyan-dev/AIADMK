@@ -7,8 +7,8 @@ const SECTIONS = [
   { h: 'Background', body: '[Editable — Add background, family and community roots in Trichy East.]' },
   { h: 'Education', body: '[Editable — Add educational qualifications and institutions.]' },
   { h: 'Professional Journey', body: '[Editable — Add career details and areas of expertise.]' },
-  { h: 'Community Service', body: '[Editable — Add social service activities led by Kartikeyan.]' },
-  { h: 'Political Journey', body: 'Kartikeyan is contesting from Trichy East for the first time in 2026, marking the beginning of his formal electoral journey under the AIADMK banner.' },
+  { h: 'Community Service', body: '[Editable — Add social service activities led by C.Karthikeyan.]' },
+  { h: 'Political Journey', body: 'C.Karthikeyan is contesting from Trichy East for the first time in 2026, marking the beginning of his formal electoral journey under the AIADMK banner.' },
   { h: 'Leadership Values', body: 'Listen before speaking. Serve before asking. Deliver before claiming. Build lasting public trust through honest action.' },
 ];
 
@@ -49,14 +49,14 @@ export default function About() {
             <div className="absolute -top-3 -left-3 w-1/2 h-1/2 border border-jade/30 pointer-events-none z-0" />
             <div className="absolute -bottom-3 -right-3 w-1/2 h-1/2 border border-crimson/20 pointer-events-none z-0" />
 
-            <img src="/hero2.jpeg" alt="Kartikeyan"
+            <img src="/hero2.jpeg" alt="C.Karthikeyan"
               className="relative z-10 w-full object-cover object-top grayscale-[20%] contrast-[1.05]"
               style={{ maxHeight: '600px' }} />
 
             {/* Card overlay */}
             <div className="relative lg:absolute lg:bottom-0 lg:left-0 lg:right-0 bg-white/90 backdrop-blur-sm p-6 z-20 border-t border-green-700/30">
               <div className="label text-red-600 mb-1">AIADMK CANDIDATE</div>
-              <div className="display-font text-2xl text-gray-900 tracking-widest">KARTIKEYAN</div>
+              <div className="display-font text-2xl text-gray-900 tracking-widest">C.Karthikeyan</div>
               <div className="text-gray-600 text-xs mt-1 tracking-wider">Trichy East Constituency · Tamil Nadu</div>
             </div>
           </motion.div>
@@ -97,5 +97,6 @@ export default function About() {
     </section>
   );
 }
+
 
 

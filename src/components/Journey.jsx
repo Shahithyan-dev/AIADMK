@@ -17,7 +17,7 @@ export default function Journey() {
           </div>
           <h2 className="section-title">The Journey Begins</h2>
           <p className="section-subtitle mt-4 max-w-xl">
-            Every great public service story has a beginning. For Kartikeyan, it begins here — in Trichy East.
+            Every great public service story has a beginning. For C.Karthikeyan, it begins here — in Trichy East.
           </p>
         </motion.div>
 
@@ -70,4 +70,5 @@ export default function Journey() {
     </section>
   );
 }
+
 

@@ -3,10 +3,10 @@ import { ExternalLink } from 'lucide-react';
 import { IconFacebook, IconInstagram, IconYoutube, IconTwitter } from './SocialIcons';
 
 const SOCIAL = [
-  { name: 'Facebook', Icon: IconFacebook, handle: '@KartikeyanAIADMK', color: 'hover:bg-blue-900/30 hover:border-blue-500', accent: 'text-blue-400', desc: 'Campaign updates, community events and news from Trichy East.' },
-  { name: 'Instagram', Icon: IconInstagram, handle: '@kartikeyan_te', color: 'hover:bg-pink-900/20 hover:border-pink-500', accent: 'text-pink-400', desc: 'Behind-the-scenes visits, photos and community moments.' },
-  { name: 'YouTube', Icon: IconYoutube, handle: 'Kartikeyan Official', color: 'hover:bg-red-900/30 hover:border-red-500', accent: 'text-red-400', desc: 'Speeches, interviews, public meetings and event recordings.' },
-  { name: 'X / Twitter', Icon: IconTwitter, handle: '@Kartikeyan_TE', color: 'hover:bg-gray-200 hover:border-gray-300/40', accent: 'text-gray-900', desc: 'Real-time statements, policy thoughts and public responses.' },
+  { name: 'Facebook', Icon: IconFacebook, handle: '@C.KarthikeyanAIADMK', color: 'hover:bg-blue-900/30 hover:border-blue-500', accent: 'text-blue-400', desc: 'Campaign updates, community events and news from Trichy East.' },
+  { name: 'Instagram', Icon: IconInstagram, handle: '@C.Karthikeyan_te', color: 'hover:bg-pink-900/20 hover:border-pink-500', accent: 'text-pink-400', desc: 'Behind-the-scenes visits, photos and community moments.' },
+  { name: 'YouTube', Icon: IconYoutube, handle: 'C.Karthikeyan Official', color: 'hover:bg-red-900/30 hover:border-red-500', accent: 'text-red-400', desc: 'Speeches, interviews, public meetings and event recordings.' },
+  { name: 'X / Twitter', Icon: IconTwitter, handle: '@C.Karthikeyan_TE', color: 'hover:bg-gray-200 hover:border-gray-300/40', accent: 'text-gray-900', desc: 'Real-time statements, policy thoughts and public responses.' },
 ];
 
 export default function Social() {
@@ -24,7 +24,7 @@ export default function Social() {
           className="display-font text-gray-900 mb-16"
           style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
         >
-          FOLLOW <span className="text-jade">KARTIKEYAN</span>
+          FOLLOW <span className="text-jade">C.Karthikeyan</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
@@ -54,4 +54,5 @@ export default function Social() {
     </section>
   );
 }
+
 

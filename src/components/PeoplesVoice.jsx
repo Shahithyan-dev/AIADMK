@@ -25,7 +25,7 @@ export default function PeoplesVoice() {
               YOUR VOICE<br /><span className="text-jade">MATTERS</span>
             </h2>
             <p className="text-gray-600 leading-relaxed mb-10 max-w-md">
-              Kartikeyan believes in open, direct dialogue. Share your concern, suggest an idea, or request a
+              C.Karthikeyan believes in open, direct dialogue. Share your concern, suggest an idea, or request a
               meeting — every message is read personally.
             </p>
 
@@ -88,4 +88,5 @@ export default function PeoplesVoice() {
     </section>
   );
 }
+
 

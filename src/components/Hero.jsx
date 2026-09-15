@@ -40,7 +40,7 @@ export default function Hero() {
             className="display-font text-gray-900 leading-none mb-6" 
             style={{ fontSize: 'clamp(4rem, 10vw, 8rem)' }}
           >
-            KARTI<span className="text-green-700">KEYAN</span>
+            C.KARTHI<span className="text-green-700">KEYAN</span>
           </motion.h1>
 
           <motion.div 
@@ -76,7 +76,7 @@ export default function Hero() {
               onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all duration-300 hover:-translate-y-0.5"
             >
-              Know Kartikeyan <ChevronRight size={15} />
+              Know C.Karthikeyan <ChevronRight size={15} />
             </button>
             <button
               onClick={() => document.querySelector('#vision')?.scrollIntoView({ behavior: 'smooth' })}
@@ -97,7 +97,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-green-700/5 translate-x-4 -translate-y-4" />
           <img 
             src="/hero1.jpeg" 
-            alt="Kartikeyan"
+            alt="C.Karthikeyan"
             className="w-full h-[80vh] object-cover object-center shadow-2xl relative z-10 border border-gray-200" 
           />
         </motion.div>
@@ -122,3 +122,4 @@ export default function Hero() {
     </section>
   );
 }
+

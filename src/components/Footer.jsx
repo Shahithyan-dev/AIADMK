@@ -32,7 +32,7 @@ export default function Footer() {
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-crimson" />
               </div>
               <div>
-                <div className="display-font text-gray-900 text-2xl tracking-widest">KARTIKEYAN</div>
+                <div className="display-font text-gray-900 text-2xl tracking-widest">C.Karthikeyan</div>
                 <div className="label text-crimson mt-0.5">AIADMK · TRICHY EAST</div>
               </div>
             </div>
@@ -67,13 +67,13 @@ export default function Footer() {
               <div>Campaign Office, Trichy East</div>
               <div>Trichy, Tamil Nadu</div>
               <div>+91 XXXXX XXXXX</div>
-              <div>connect@kartikeyan.in</div>
+              <div>connect@C.Karthikeyan.in</div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-300/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="label text-gray-600 text-[9px]">© {new Date().getFullYear()} KARTIKEYAN. ALL RIGHTS RESERVED.</p>
+          <p className="label text-gray-600 text-[9px]">© {new Date().getFullYear()} C.Karthikeyan. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Use', 'Disclaimer'].map(l => (
               <a key={l} href="#" className="label text-gray-600 hover:text-jade transition-colors text-[9px]">{l}</a>
@@ -81,10 +81,11 @@ export default function Footer() {
           </div>
         </div>
         <p className="label text-gray-600/30 text-[9px] mt-4 text-center">
-          Official campaign website for Kartikeyan, AIADMK candidate, Trichy East.
+          Official campaign website for C.Karthikeyan, AIADMK candidate, Trichy East.
         </p>
       </div>
     </footer>
   );
 }
+
 
