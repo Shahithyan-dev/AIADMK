@@ -81,9 +81,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl"
+          className="max-w-xl"
         >
-          <p className="serif-font text-base sm:text-xl lg:text-2xl text-gray-200 italic leading-relaxed drop-shadow-md mb-6 sm:mb-10">
+          <p className="serif-font text-base ss:text-xl lg:text-xl text-gray-200 italic leading-relaxed drop-shadow-md mb-6 sm:mb-10">
             A vision of progress, grounded in grassroots reality. Committed to elevating the lives of everyone in Trichy East.
           </p>
 
