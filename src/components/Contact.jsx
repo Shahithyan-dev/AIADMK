@@ -8,23 +8,24 @@ export default function Contact() {
   const sub = e => { e.preventDefault(); setSent(true); setForm({ name: '', phone: '', email: '', area: '', msg: '' }); setTimeout(() => setSent(false), 6000); };
 
   return (
-    <section id="contact" className="bg-white py-28 relative overflow-hidden">
+    <section id="contact" className="bg-white py-16 lg:py-24 relative overflow-hidden">
 
 
       <div className="wrap relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Get in Touch</span>
+        <div className="section-header">
+          <div className="section-label-row">
+            <div className="section-label-line" />
+            <span className="section-label-text">Get in Touch</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-h2"
+          >
+            CONNECT WITH <span className="text-green-700">C.Karthikeyan</span>
+          </motion.h2>
         </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 mb-16"
-          style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
-        >
-          CONNECT WITH<br /><span className="text-jade">C.Karthikeyan</span>
-        </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Info */}
@@ -49,7 +50,7 @@ export default function Contact() {
             {/* Image */}
             <div className="relative overflow-hidden">
               <img src="/hero3.jpeg" alt="Campaign Office"
-                className="w-full h-48 object-cover grayscale-[30%]" />
+                className="w-full h-60 object-cover grayscale-[30%]" />
               <div className="absolute inset-0 bg-gradient-to-t from-onyx/80 to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <div className="display-font text-gray-900 tracking-widest text-lg">TRICHY EAST</div>

@@ -17,7 +17,7 @@ export default function About() {
   const visible = expanded ? SECTIONS : SECTIONS.slice(0, 3);
 
   return (
-    <section id="about" className="bg-gray-50 py-28 relative overflow-hidden">
+    <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Ghost number */}
 
 

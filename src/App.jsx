@@ -3,9 +3,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Journey from './components/Journey';
-import Constituency from './components/Constituency';
+
 import Vision from './components/Vision';
-import Agenda from './components/Agenda';
 import News from './components/News';
 import Gallery from './components/Gallery';
 import Social from './components/Social';
@@ -18,11 +17,19 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Journey />
-        <Constituency />
+        <div 
+          className="relative bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: "url('/background.jpg')" }}
+        >
+          {/* Subtle overlay to ensure text is readable against the background */}
+          <div className="absolute inset-0 bg-white/80 pointer-events-none" />
+          <div className="relative z-10">
+            <About />
+            <Journey />
+          </div>
+        </div>
+
         <Vision />
-        <Agenda />
         <News />
         <Gallery />
         <Social />

@@ -11,7 +11,7 @@ const SOCIAL = [
 
 export default function Social() {
   return (
-    <section id="social" className="bg-gray-50 py-28 relative overflow-hidden">
+    <section id="social" className="bg-gray-50 py-16 lg:py-24 relative overflow-hidden">
       <div className="wrap">
         <div className="flex items-center gap-4 mb-4">
           <div className="divider" />

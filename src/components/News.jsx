@@ -12,8 +12,8 @@ export default function News() {
   const rest = NEWS.filter(n => !n.featured);
 
   return (
-    <section id="news" className="bg-white py-24 relative overflow-hidden">
-      <div className="wrap relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="news" className="bg-white py-16 lg:py-24 relative overflow-hidden">
+      <div className="wrap relative z-10">
         <div className="section-header">
           <div className="section-label-row">
             <div className="section-label-line" />

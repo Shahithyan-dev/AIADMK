@@ -7,12 +7,13 @@ import { POLITICIAN } from '../data/config';
 const LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Journey', href: '#journey' },
+
   { label: 'Vision', href: '#vision' },
-  { label: 'Trichy East', href: '#constituency' },
-  { label: 'Agenda', href: '#agenda' },
+  { label: 'News', href: '#news' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
-];
+]; // Force HMR refresh
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

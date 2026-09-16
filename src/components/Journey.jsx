@@ -1,11 +1,32 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import { TIMELINE } from '../data/config';
 
+// Using the requested images instead of hero images
+const EVENT_IMAGES = [
+  '/journey.png',
+  '/i1.png',
+  '/i2.png',
+  '/journey_image.png'
+];
+
 export default function Journey() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeEvent = TIMELINE[activeIndex];
+
   return (
-    <section id="journey" className="section-padding bg-brand-light">
-      <div className="container-custom">
-        <div className="section-header">
+    <section id="journey" className="py-16 lg:py-24 relative overflow-hidden bg-[#FDFBF7]">
+      
+      {/* Decorative Leaf Background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl opacity-[0.03] pointer-events-none z-0">
+        <img src="/leaf.png" alt="Leaf Background" className="w-full h-auto" />
+      </div>
+
+      <div className="wrap relative z-10">
+        
+        {/* Section Header */}
+        <div className="section-header mb-16">
           <div className="section-label-row">
             <div className="section-label-line" />
             <span className="section-label-text">First Electoral Journey</span>
@@ -14,112 +35,105 @@ export default function Journey() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="section-h2"
+            className="section-h2 text-green-800"
           >
-            The Journey Begins
+            OUR <span className="text-gray-900">JOURNEY</span>
           </motion.h2>
-          <p className="section-desc">
-            Every great public service story has a beginning. For C.Karthikeyan, it begins here — in Trichy East.
-          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column: Timeline */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-gray-300" />
+        {/* Horizontal Timeline Navigation */}
+        <div className="relative mb-20 max-w-4xl mx-auto">
+          {/* Continuous Horizontal Line */}
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2 z-0 hidden md:block" />
 
-            <div className="space-y-6">
-            {TIMELINE.map((event, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="relative pl-16 group"
-              >
-                {/* Timeline Dot (Animated on hover) */}
-                <div className={`absolute left-5 top-6 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg ${
-                  event.status === 'current'
-                    ? 'bg-green-600 shadow-[0_0_15px_rgba(22,163,74,0.5)]'
-                    : 'bg-white border-4 border-gray-200'
-                }`}>
-                  {event.status === 'current' && (
-                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                  )}
-                </div>
-
-                {/* Timeline Content Card */}
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300 transform group-hover:-translate-y-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`text-sm font-black tracking-widest uppercase ${
-                      event.status === 'current' ? 'text-red-600' : 'text-gray-400'
-                    }`}>
-                      {event.year}
-                    </span>
-                    {event.status === 'current' && (
-                      <span className="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold tracking-widest uppercase">
-                        Active Now
-                      </span>
-                    )}
+          <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 relative z-10">
+            {TIMELINE.map((event, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className="flex flex-col items-center group relative focus:outline-none"
+                >
+                  {/* Two Leaves Icon Node */}
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border-2 ${
+                    isActive 
+                      ? 'bg-green-50 border-green-700 scale-110 shadow-lg' 
+                      : 'bg-white border-gray-300 group-hover:border-green-400'
+                  }`}>
+                    <img 
+                      src="/leaf.png" 
+                      alt="Leaf Icon" 
+                      className={`w-8 h-8 object-contain transition-all duration-300 mix-blend-multiply ${isActive ? 'opacity-100 scale-110' : 'opacity-40 group-hover:opacity-100'}`} 
+                    />
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 tracking-tight">{event.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{event.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          </div>
+                  
+                  {/* Year Label */}
+                  <span className={`mt-3 font-bold transition-colors duration-300 ${
+                    isActive ? 'text-green-700 text-lg' : 'text-gray-400 text-sm'
+                  }`}>
+                    {event.year}
+                  </span>
 
-          {/* Right Column: Image */}
-          <div className="hidden lg:block relative h-full min-h-[600px] w-full pl-10">
-            {/* Decorative Background Frame */}
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="absolute right-0 top-10 bottom-0 w-4/5 border-2 border-red-600/20 rounded-2xl" 
-            />
-
-            {/* Decorative Dots Pattern */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="absolute -top-4 -right-4 w-32 h-32 opacity-20 pointer-events-none"
-              style={{
-                backgroundImage: 'radial-gradient(circle, #000 2px, transparent 2.5px)',
-                backgroundSize: '16px 16px'
-              }}
-            />
-
-            {/* Main Image Container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="absolute top-0 bottom-10 left-0 right-10 rounded-2xl overflow-hidden shadow-2xl z-10 border-[6px] border-white"
-            >
-              <img src="/hero3.jpeg" alt="C.Karthikeyan in Trichy East" className="absolute inset-0 w-full h-full object-cover object-top hover:scale-105 transition-transform duration-1000" />
-              
-              {/* Subtle Gradient Overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-gray-900/10 to-transparent" />
-              
-              {/* Floating Badge on Image */}
-              <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg border-l-4 border-green-600">
-                <p className="text-gray-900 font-bold text-sm tracking-wider uppercase">Roots in Trichy</p>
-                <p className="text-gray-500 text-xs mt-0.5">Grassroots leadership</p>
-              </div>
-            </motion.div>
+                  {/* Highlight active indicator */}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="active-indicator"
+                      className="absolute -inset-x-4 -inset-y-2 border border-green-200 rounded-lg pointer-events-none"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
+
+        {/* Content Display Area */}
+        <div className="min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start"
+            >
+              
+              {/* Left: Image Box */}
+              <div className="lg:col-span-5 w-full flex items-center justify-center">
+                <img 
+                  src={EVENT_IMAGES[activeIndex % EVENT_IMAGES.length]} 
+                  alt={activeEvent.title}
+                  className="w-full h-auto object-contain rounded-2xl shadow-xl border border-gray-100"
+                />
+              </div>
+
+              {/* Right: Text Content */}
+              <div className="lg:col-span-7 flex flex-col justify-center h-full py-4 lg:py-10">
+                {/* Year Badge */}
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-900 font-bold px-4 py-1.5 rounded-lg self-start mb-6 shadow-sm">
+                  <span>{activeEvent.year}</span>
+                  <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                    <ChevronRight size={14} className="text-green-700" />
+                  </div>
+                </div>
+
+                <h3 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-6 display-font">
+                  {activeEvent.title}
+                </h3>
+                
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl border-l-4 border-green-200 pl-6">
+                  {activeEvent.description}
+                </p>
+              </div>
+
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
       </div>
     </section>
   );
 }
-
-

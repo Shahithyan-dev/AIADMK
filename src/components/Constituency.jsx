@@ -18,26 +18,27 @@ const ISSUES = [
 
 export default function Constituency() {
   return (
-    <section id="constituency" className="bg-gray-50 py-28 relative overflow-hidden">
+    <section id="constituency" className="bg-gray-50 py-16 lg:py-24 relative overflow-hidden">
 
 
       <div className="wrap relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Our Ground</span>
+        <div className="section-header">
+          <div className="section-label-row">
+            <div className="section-label-line" />
+            <span className="section-label-text">Our Ground</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-h2"
+          >
+            TRICHY <span className="text-green-700">EAST</span>
+          </motion.h2>
+          <p className="section-desc italic">
+            "Understanding our constituency is the first step to serving it."
+          </p>
         </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 mb-4"
-          style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
-        >
-          TRICHY <span className="text-jade">EAST</span>
-        </motion.h2>
-        <p className="serif-font text-gray-800/60 italic text-xl mb-16 max-w-lg">
-          "Understanding our constituency is the first step to serving it."
-        </p>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Map card */}
