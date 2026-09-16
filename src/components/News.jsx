@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const NEWS = [
-  { cat: 'NEWS', date: 'September 2026', title: 'C.Karthikeyan Launches Campaign for Trichy East', desc: 'Marking the beginning of his first electoral journey, C.Karthikeyan officially launches his campaign with a commitment to practical service for Trichy East.', img: '/hero1.jpeg', featured: true },
-  { cat: 'STATEMENT', date: 'September 2026', title: 'Vision for a Stronger Trichy East', desc: 'Six-pillar vision for Trichy East focusing on infrastructure, education, healthcare and inclusive development.', img: '/hero2.jpeg' },
-  { cat: 'EVENT', date: 'September 2026', title: 'Community Meeting — Ward Representatives', desc: 'C.Karthikeyan meets ward-level community representatives to understand ground-level concerns.', img: '/hero3.jpeg' },
-  { cat: 'MEDIA', date: 'September 2026', title: 'AIADMK Announces Trichy East Candidate', desc: '[Editable: Add details of party announcement and media coverage.]', img: '/hero1.jpeg' },
+  { cat: 'NEWS', date: 'September 2026', title: 'C.Karthikeyan Launches Campaign for Trichy East', desc: 'Marking the beginning of his first electoral journey, C.Karthikeyan officially launches his campaign with a commitment to practical service for Trichy East.', img: '/blog/WhatsApp Image 2026-09-15 at 4.40.15 PM.jpeg', featured: true },
+  { cat: 'STATEMENT', date: 'September 2026', title: 'Vision for a Stronger Trichy East', desc: 'Six-pillar vision for Trichy East focusing on infrastructure, education, healthcare and inclusive development.', img: '/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (1).jpeg' },
+  { cat: 'EVENT', date: 'September 2026', title: 'Community Meeting — Ward Representatives', desc: 'C.Karthikeyan meets ward-level community representatives to understand ground-level concerns.', img: '/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (2).jpeg' },
+  { cat: 'MEDIA', date: 'September 2026', title: 'AIADMK Announces Trichy East Candidate', desc: '[Editable: Add details of party announcement and media coverage.]', img: '/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (3).jpeg' },
 ];
 
 export default function News() {
@@ -12,22 +12,20 @@ export default function News() {
   const rest = NEWS.filter(n => !n.featured);
 
   return (
-    <section id="news" className="bg-gray-50 py-28 relative overflow-hidden">
-      <span className="section-num right-0 top-8">05</span>
-
-      <div className="wrap relative z-10">
+    <section id="news" className="bg-white py-24 relative overflow-hidden">
+      <div className="wrap relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Newsroom</span>
+          <div className="h-px w-12 bg-red-600" />
+          <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Newsroom</span>
         </div>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="display-font text-gray-900 mb-16"
-          style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
+          className="display-font text-gray-900 leading-tight mb-16"
+          style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
         >
-          LATEST <span className="text-jade">UPDATES</span>
+          LATEST <span className="text-green-700">UPDATES</span>
         </motion.h2>
 
         {/* Featured */}

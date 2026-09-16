@@ -1,101 +1,128 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 
-const CATS = ['All', 'People', 'Meetings', 'Events', 'Youth', 'Women'];
 const IMGS = [
-  { src: '/hero1.jpeg', cat: 'Meetings', cap: 'Community Engagement · Trichy East' },
-  { src: '/hero2.jpeg', cat: 'People', cap: 'Meeting with Residents' },
-  { src: '/hero3.jpeg', cat: 'Events', cap: 'Campaign Launch 2026' },
-  { src: '/hero1.jpeg', cat: 'Youth', cap: 'Youth Dialogue Programme' },
-  { src: '/hero2.jpeg', cat: 'Women', cap: "Women's Empowerment Session" },
-  { src: '/hero3.jpeg', cat: 'People', cap: 'Door-to-door Outreach' },
-  { src: '/hero1.jpeg', cat: 'Meetings', cap: 'Ward Representatives Forum' },
-  { src: '/hero2.jpeg', cat: 'Events', cap: 'Public Rally · Trichy East' },
-  { src: '/hero3.jpeg', cat: 'Youth', cap: 'Youth Leadership Meet' },
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.57 PM (1).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.57 PM (2).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.57 PM.jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (1).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (2).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (3).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (4).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (5).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM (6).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.30.59 PM.jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.15 PM.jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (1).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (2).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (3).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (4).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (5).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (6).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (7).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (8).jpeg",
+  "/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM.jpeg",
 ];
 
 export default function Gallery() {
-  const [active, setActive] = useState('All');
-  const [lb, setLb] = useState(null);
-  const filtered = active === 'All' ? IMGS : IMGS.filter(g => g.cat === active);
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const next = () => {
+    setDirection(1);
+    setIndex((prev) => (prev + 1 === IMGS.length ? 0 : prev + 1));
+  };
+
+  const prev = () => {
+    setDirection(-1);
+    setIndex((prev) => (prev === 0 ? IMGS.length - 1 : prev - 1));
+  };
+
+  const variants = {
+    enter: (dir) => ({
+      x: dir > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      z: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (dir) => ({
+      z: 0,
+      x: dir < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
 
   return (
-    <section id="gallery" className="bg-white py-28 relative overflow-hidden">
-      <span className="section-num right-0 top-8">06</span>
-
-      <div className="wrap relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Photo Gallery</span>
-        </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 mb-12"
-          style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
-        >
-          GALLERY
-        </motion.h2>
-
-        <div className="flex flex-wrap gap-2 mb-10">
-          {CATS.map(c => (
-            <button key={c} onClick={() => setActive(c)}
-              className={`label px-4 py-2 border transition-all duration-200 ${active === c ? 'bg-jade border-jade text-gray-900' : 'border-gray-300/10 text-gray-600 hover:border-jade hover:text-jade'}`}>
-              {c}
-            </button>
-          ))}
-        </div>
-
-        <div className="columns-2 md:columns-3 gap-2 space-y-2">
-          {filtered.map((img, i) => (
-            <motion.div
-              key={`${img.src}-${i}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: i * 0.04 }}
-              onClick={() => setLb(img)}
-              className="break-inside-avoid relative group cursor-pointer mb-2"
+    <section id="gallery" className="bg-gray-50 py-24 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px w-12 bg-red-600" />
+              <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Campaign Trail</span>
+            </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="display-font text-gray-900 leading-tight"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
             >
-              <img src={img.src} alt={img.cap}
-                className="w-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-[1.02]" />
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/40 transition-all duration-300 flex items-center justify-center">
-                <ZoomIn size={26} className="text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-onyx/80 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="label text-jade text-[9px]">{img.cap}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {lb && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-white/97 flex items-center justify-center p-6"
-            onClick={() => setLb(null)}
-          >
-            <button className="absolute top-6 right-6 text-gray-600 hover:text-crimson transition-colors">
-              <X size={28} />
+              IN <span className="text-green-700">ACTION</span>
+            </motion.h2>
+          </div>
+          
+          {/* Controls */}
+          <div className="flex items-center gap-4">
+            <button onClick={prev} className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-600 hover:text-green-700 hover:border-green-700 transition-colors shadow-sm">
+              <ChevronLeft size={24} strokeWidth={1.5} />
             </button>
+            <button onClick={next} className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-600 hover:text-green-700 hover:border-green-700 transition-colors shadow-sm">
+              <ChevronRight size={24} strokeWidth={1.5} />
+            </button>
+          </div>
+        </div>
+
+        {/* Image Slider */}
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-gray-200 rounded-2xl overflow-hidden shadow-lg border border-gray-200 flex items-center justify-center">
+          
+          {/* Placeholder/Loading state background */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+            <ImageIcon size={48} strokeWidth={1} className="mb-2 opacity-50" />
+            <span className="text-sm font-medium tracking-widest uppercase">Loading Image...</span>
+          </div>
+
+          <AnimatePresence initial={false} custom={direction}>
             <motion.img
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              src={lb.src} alt={lb.cap}
-              className="max-w-full max-h-[85vh] object-contain"
-              onClick={e => e.stopPropagation()}
+              key={index}
+              src={IMGS[index]}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="absolute inset-0 w-full h-full object-contain bg-black/5 backdrop-blur-sm z-10"
+              alt={`Campaign Moment ${index + 1}`}
             />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 label text-jade">{lb.cap}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </AnimatePresence>
+          
+          {/* Number Indicator */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 bg-black/50 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest">
+            {index + 1} / {IMGS.length}
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 }
-
-
