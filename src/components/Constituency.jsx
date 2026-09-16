@@ -19,7 +19,7 @@ const ISSUES = [
 export default function Constituency() {
   return (
     <section id="constituency" className="bg-gray-50 py-28 relative overflow-hidden">
-      <span className="section-num right-0 top-8">03</span>
+
 
       <div className="wrap relative z-10">
         <div className="flex items-center gap-4 mb-4">

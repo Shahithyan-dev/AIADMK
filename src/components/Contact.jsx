@@ -9,7 +9,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="bg-white py-28 relative overflow-hidden">
-      <span className="section-num right-0 top-8">07</span>
+
 
       <div className="wrap relative z-10">
         <div className="flex items-center gap-4 mb-4">

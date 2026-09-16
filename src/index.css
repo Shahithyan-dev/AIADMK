@@ -63,6 +63,21 @@
   }
 
   .divider { @apply w-10 h-[2px] bg-crimson; }
+
+  /* ── Consistent Section Header spacing ── */
+  .section-header { @apply mb-16 md:mb-20; }
+
+  .section-label-row { @apply flex items-center gap-4 mb-5; }
+  .section-label-line { @apply w-12 h-1 bg-red-600 shrink-0; }
+  .section-label-text { @apply text-red-600 font-bold tracking-[0.2em] uppercase text-sm; }
+
+  .section-h2 {
+    @apply display-font text-gray-900 leading-tight mb-5;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  .section-desc {
+    @apply text-lg text-gray-600 leading-relaxed max-w-2xl;
+  }
 }
 
 @layer utilities {

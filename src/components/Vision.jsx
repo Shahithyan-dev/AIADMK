@@ -14,23 +14,20 @@ export default function Vision() {
   return (
     <section id="vision" className="bg-gray-50 py-24 relative overflow-hidden">
       <div className="wrap relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between flex-wrap gap-6 mb-16">
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px w-12 bg-red-600" />
-              <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Looking Ahead</span>
-            </div>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="display-font text-gray-900 leading-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
-            >
+        <div className="section-header">
+          <div className="section-label-row">
+            <div className="section-label-line" />
+            <span className="section-label-text">Looking Ahead</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-h2"
+          >
               PIONEER OF COOPERATIVE<br />
               <span className="text-green-700">MOVEMENT</span>
             </motion.h2>
-          </div>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">

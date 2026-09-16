@@ -62,24 +62,24 @@ export default function Gallery() {
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-px w-12 bg-red-600" />
-              <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Campaign Trail</span>
+          <div className="section-header" style={{marginBottom: 0}}>
+            <div className="section-label-row">
+              <div className="section-label-line" />
+              <span className="section-label-text">Campaign Trail</span>
             </div>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="display-font text-gray-900 leading-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+              className="section-h2"
+              style={{marginBottom: 0}}
             >
-              IN <span className="text-green-700">ACTION</span>
+              GALL<span className="text-green-700">ERY</span>
             </motion.h2>
           </div>
           
           {/* Controls */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 md:translate-x-6">
             <button onClick={prev} className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-600 hover:text-green-700 hover:border-green-700 transition-colors shadow-sm">
               <ChevronLeft size={24} strokeWidth={1.5} />
             </button>

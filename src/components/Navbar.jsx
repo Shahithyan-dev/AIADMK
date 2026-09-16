@@ -36,21 +36,19 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white ${
-          scrolled ? 'shadow-md py-2' : 'py-4 border-b border-gray-200'
+          scrolled ? 'shadow-md py-1 sm:py-2' : 'py-2 sm:py-4 border-b border-gray-200'
         }`}
       >
         {/* Top accent line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-700 via-red-600 to-green-700" />
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="w-full px-4 sm:px-6 lg:px-10 flex items-center justify-between">
           
           {/* Logo Section */}
-          <button onClick={() => go('#home')} className="flex items-center gap-3 group text-left">
-            <div className="w-12 h-12 bg-green-700 flex items-center justify-center text-white font-bold text-2xl display-font shrink-0">
-              K
-            </div>
+          <button onClick={() => go('#home')} className="flex items-center gap-2 sm:gap-4 group text-left">
+            <img src="/logo.jpeg" alt="AIADMK Logo" className="w-10 h-10 sm:w-14 sm:h-14 lg:w-20 lg:h-20 object-cover rounded-full shadow-sm border-2 border-white" />
             <div className="hidden sm:block">
-              <div className="display-font text-gray-900 text-2xl tracking-widest leading-none">
+              <div className="display-font text-gray-900 text-2xl tracking-widest leading-none text-left">
                 {POLITICIAN.name.toUpperCase()}
               </div>
               <div className="flex items-center gap-2 mt-1">
@@ -62,7 +60,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 ml-auto">
             {LINKS.map(l => (
               <button 
                 key={l.href} 
@@ -75,25 +73,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right Actions */}
-          <div className="flex items-center gap-5">
-            <div className="hidden xl:flex items-center gap-3 border-l border-gray-200 pl-5">
-              {[IconFacebook, IconInstagram, IconYoutube, IconTwitter].map((Icon, i) => (
-                <a key={i} href="#" className="text-gray-400 hover:text-green-700 transition-colors">
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
-            
-            <button 
-              onClick={() => go('#contact')}
-              className="hidden md:flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] tracking-widest uppercase px-5 py-2.5 transition-colors"
-            >
-              Connect <ChevronRight size={14} />
-            </button>
-
-            {/* Mobile Menu Toggle */}
-            <button onClick={() => setOpen(!open)} className="lg:hidden text-gray-900 p-2">
+          {/* Mobile Menu Toggle (Always on the right on mobile) */}
+          <div className="flex items-center lg:hidden ml-auto">
+            <button onClick={() => setOpen(!open)} className="text-gray-900 p-2">
               {open ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

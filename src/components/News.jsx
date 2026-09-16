@@ -14,19 +14,20 @@ export default function News() {
   return (
     <section id="news" className="bg-white py-24 relative overflow-hidden">
       <div className="wrap relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="h-px w-12 bg-red-600" />
-          <span className="label text-red-600 font-bold uppercase tracking-widest text-xs">Newsroom</span>
+        <div className="section-header">
+          <div className="section-label-row">
+            <div className="section-label-line" />
+            <span className="section-label-text">Newsroom</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-h2"
+          >
+            LATEST <span className="text-green-700">UPDATES</span>
+          </motion.h2>
         </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 leading-tight mb-16"
-          style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
-        >
-          LATEST <span className="text-green-700">UPDATES</span>
-        </motion.h2>
 
         {/* Featured */}
         {featured && (

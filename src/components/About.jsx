@@ -19,23 +19,23 @@ export default function About() {
   return (
     <section id="about" className="bg-gray-50 py-28 relative overflow-hidden">
       {/* Ghost number */}
-      <span className="section-num right-0 top-8 opacity-5">01</span>
+
 
       <div className="wrap relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="divider" />
-          <span className="label text-crimson">Strengthening the Party Cadre</span>
+        <div className="section-header">
+          <div className="section-label-row">
+            <div className="section-label-line" />
+            <span className="section-label-text">Strengthening the Party Cadre</span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-h2"
+          >
+            About <span className="text-stroke">BUILDER</span>
+          </motion.h2>
         </div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="display-font text-gray-900 mb-16"
-          style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
-        >
-          ORGANIZATION <span className="text-stroke">BUILDER</span>
-        </motion.h2>
 
         <div className="grid lg:grid-cols-5 gap-16 items-start">
           {/* Portrait */}
