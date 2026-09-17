@@ -14,18 +14,15 @@ export default function News() {
   
   const scrollRef = useRef(null);
 
+  // Duplicate items many times so it just keeps scrolling forward
+  const sliderItems = Array(20).fill(rest).flat();
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        
-        // If we've reached the end, loop back to the start
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          // Scroll forward by one card width
-          scrollRef.current.scrollBy({ left: clientWidth * 0.85, behavior: 'smooth' });
-        }
+        const { clientWidth } = scrollRef.current;
+        // Always scroll forward by one card smoothly
+        scrollRef.current.scrollBy({ left: clientWidth * 0.85, behavior: 'smooth' });
       }
     }, 3000);
 
@@ -77,12 +74,12 @@ export default function News() {
         {/* Grid - Horizontal Scroll Slider on Mobile, Grid on Desktop */}
         <div 
           ref={scrollRef}
-          className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory scroll-smooth scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0" 
-          style={{ WebkitOverflowScrolling: 'touch' }}
+          className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden" 
+          style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {rest.map((item, i) => (
+          {sliderItems.map((item, i) => (
             <motion.article
-              key={item.title}
+              key={`${item.title}-${i}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
