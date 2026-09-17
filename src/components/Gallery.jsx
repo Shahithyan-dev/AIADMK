@@ -25,9 +25,6 @@ const ALL_IMAGES = [
   '/blog/WhatsApp Image 2026-09-15 at 4.40.16 PM (8).jpeg',
 ];
 
-const PER_PAGE = 10;
-const TOTAL_PAGES = Math.ceil(ALL_IMAGES.length / PER_PAGE);
-
 const variants = {
   enter: (dir) => ({ opacity: 0, x: dir > 0 ? 80 : -80, scale: 0.97 }),
   center: { opacity: 1, x: 0, scale: 1 },
@@ -37,22 +34,35 @@ const variants = {
 export default function Gallery() {
   const [page, setPage] = useState(0);
   const [dir, setDir] = useState(1);
+  const [perPage, setPerPage] = useState(10); // Default for initial render
+
+  // Detect screen size to set images per page
+  useEffect(() => {
+    const handleResize = () => {
+      setPerPage(window.innerWidth >= 1024 ? 10 : 5);
+    };
+    handleResize(); // Check immediately
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(ALL_IMAGES.length / perPage);
 
   const goTo = (newPage, direction) => {
     setDir(direction);
     setPage(newPage);
   };
 
-  const next = () => goTo((page + 1) % TOTAL_PAGES, 1);
-  const prev = () => goTo((page - 1 + TOTAL_PAGES) % TOTAL_PAGES, -1);
+  const next = () => goTo((page + 1) % totalPages, 1);
+  const prev = () => goTo((page - 1 + totalPages) % totalPages, -1);
 
   // Auto-advance every 6 seconds
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
-  }, [page]);
+  }, [page, totalPages]);
 
-  const images = ALL_IMAGES.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const images = ALL_IMAGES.slice(page * perPage, page * perPage + perPage);
 
   return (
     <section id="gallery" className="bg-gray-50 py-16 lg:py-24 relative overflow-hidden">
@@ -99,7 +109,7 @@ export default function Gallery() {
             </button>
             {/* Page dots */}
             <div className="flex items-center gap-2 px-2">
-              {Array.from({ length: TOTAL_PAGES }).map((_, i) => (
+              {Array.from({ length: totalPages }).map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i, i > page ? 1 : -1)}
@@ -129,7 +139,7 @@ export default function Gallery() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3"
+              className="grid grid-cols-2 lg:grid-cols-5 gap-3"
             >
               {images.map((src, i) => (
                 <motion.div
@@ -144,7 +154,7 @@ export default function Gallery() {
                 >
                   <img
                     src={src}
-                    alt={`Gallery image ${page * PER_PAGE + i + 1}`}
+                    alt={`Gallery image ${page * perPage + i + 1}`}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
@@ -152,7 +162,7 @@ export default function Gallery() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                     <span className="text-white text-xs font-bold bg-green-600 px-2 py-1 rounded-full">
-                      #{page * PER_PAGE + i + 1}
+                      #{page * perPage + i + 1}
                     </span>
                   </div>
                 </motion.div>
